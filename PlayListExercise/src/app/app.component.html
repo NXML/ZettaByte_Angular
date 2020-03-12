@@ -1,0 +1,36 @@
+<div class="container">
+<h1 class="title">The Playlists</h1>
+<p class="center">
+  Here you can create your own playlist, edit your already existing playlist, add songs, and show it to the world!
+</p>
+
+<button>New Playlist</button>
+
+<hr>
+
+
+<div class="playlists_container"></div>
+
+<div class="playlist" *ngFor='let playlist of playlists'>
+  <h3 class="title">{{playlist.name}}</h3>
+
+  <span class="info">
+    <div class="description">
+      {{playlist.description}}
+    </div>
+    <div class="songs_container">
+      <div class="song" *ngFor="let song of playlist.songs">
+        <div class="title">{{song.title}}</div>
+        <div class="autor">{{song.author}}</div>
+        <div class="duration">{{song.duration}}</div>
+      </div>
+    </div>
+
+    <span class="delete">DELETE</span>
+    <spen class="edit">EDIT</spen>
+
+  </span>
+</div>
+
+
+</div>

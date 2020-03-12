@@ -1,1 +1,50 @@
-<p>shop works!</p>
+<h1 class="title">[NPC] Beginner Merchant</h1>
+
+
+<p>Hello Adventurer, welcome to the town of Angular!<br>
+    Here you can explore all the exciting stuff like meeting weird monster, learning new spell, and discovering rare item.<br>
+    But first, you need some weapon/spell to accompany you along the way!<br>
+    I will give you 1000 gold, so choose your weapon/spell wisely~</p>
+
+
+<div class="shop_container">
+
+    <div class="item" *ngFor="let item of items">
+        <div class="card">
+            <h3>{{item.name}}</h3>
+        <h6>{{item.price}}</h6>
+        <div class="img_container">
+            <img src="{{item.image}}" alt="">
+
+        </div>
+        <p>{{item.desc}}</p>
+
+        <button (click)="addToCart(item)" [className]="item.addedToCart ? 'active' : 'inactive'">
+            {{item.addedToCart ? "Remove from cart":"Add to cart"}}
+        </button>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+<hr>
+<h2>Added to cart:</h2>
+<div class="cart-container">
+    <div class="cart-item" *ngFor="let item of cart">
+        {{item.name}} <span class="total">{{item.price}}</span>
+    </div>
+</div>
+
+
+<hr>
+<span class="total_label">Total:</span>
+ <span class="total">{{getTotal()}}</span>
+ 
+
+ <button class="buy" (click)="buy()">Buy</button>
+
+ 
+

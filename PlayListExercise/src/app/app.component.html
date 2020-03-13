@@ -1,36 +1,89 @@
+<div class="main">
 <div class="container">
 <h1 class="title">The Playlists</h1>
 <p class="center">
   Here you can create your own playlist, edit your already existing playlist, add songs, and show it to the world!
 </p>
 
-<button>New Playlist</button>
+<button class="new_button" (click)="startAdding()">New Playlist</button>
 
 <hr>
 
 
 <div class="playlists_container"></div>
 
-<div class="playlist" *ngFor='let playlist of playlists'>
+<div class="playlist" *ngFor='let playlist of playlists;index as i'>
   <h3 class="title">{{playlist.name}}</h3>
 
-  <span class="info">
+  <div class="info">
     <div class="description">
       {{playlist.description}}
     </div>
+    <div class="playlist_info">
+
+      <div class="count">total {{countSong(playlist)}} songs</div>
+      <div class="duration">{{countDuration(playlist)}} minutes</div>
+    </div>
+    <hr>
     <div class="songs_container">
       <div class="song" *ngFor="let song of playlist.songs">
         <div class="title">{{song.title}}</div>
-        <div class="autor">{{song.author}}</div>
-        <div class="duration">{{song.duration}}</div>
+       <div class="song__info">
+        <div class="autor">by {{song.artist}}</div>
+        <div class="duration">{{song.duration}} minutes</div>
+       </div>
+      
       </div>
     </div>
 
-    <span class="delete">DELETE</span>
-    <spen class="edit">EDIT</spen>
+    <span class="delete action"(click)="deletePlaylist(i)">DELETE</span>
+    <span class="edit action" (click)=editPlaylist(i)>EDIT</span>
 
-  </span>
+  </div>
 </div>
 
+
+  
+</div>
+
+<div  [className]="editing||adding? 'active modal_container' : 'modal_container inactive'">
+  <div class="modal "  >
+
+    <h3>Create a new playlist</h3>
+
+    <input type="text" class="name playlist_input" placeholder="Name *" [(ngModel)]="newPlaylist.name" >
+    <input type="text" class="description playlist_input" placeholder="Description *" [(ngModel)]="newPlaylist.description">
+    <div class="add_song_container">
+
+      <div class="list_song" *ngFor="let song of newPlaylist.songs;index as i">
+        <div class="add_song">
+          <input type="text" placeholder="Title *"  [(ngModel)]="song.title">
+        <input type="text" placeholder="Artist *"  [(ngModel)]="song.artist">
+        <input type="number" placeholder="Duration Minutes" [(ngModel)]="song.duration"> minutes
+        <button (click)=" deleteSong(i)" class="remsong editsong">Delete</button>
+        </div>
+      </div>
+
+
+      <div class="add_song">
+        <input type="text" placeholder="Title *"  [(ngModel)]="newSong.title">
+        <input type="text" placeholder="Artist *"  [(ngModel)]="newSong.artist">
+        <input type="number" placeholder="Duration Minutes" [(ngModel)]="newSong.duration"> minutes
+        <button (click)="add()" class="addsong editsong">Add</button>
+      </div>
+
+
+    </div>
+
+
+
+
+    <div class="buttons">
+      <button class="cancel" (click)="cancel()">CANCEL</button>
+      <button  (click)="submit()" class="submit"  [disabled]=" submitDisabled()">SUBMIT</button>
+    </div>
+    
+  </div>
+</div>
 
 </div>

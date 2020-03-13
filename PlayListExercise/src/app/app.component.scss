@@ -1,14 +1,194 @@
+html,body{
+    margin:0 !important;
+    padding: 0 !important;
+}
+
+
+
 .playlist{
     margin: 30px;
     box-shadow: 0 8px 17px 2px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2);
     padding: 25px;
 }
 
+.action{
+    &:hover{
+        background-color: rgb(235, 235, 235);
+    }
+    margin: 15px;
+    padding: .3em .7em;
+}
+
 .delete{
     color:red;
-    margin: 15px;
+  
 }
 .edit{
     color: black;
-    margin: 15px;
+   
+}
+
+
+.new_button{
+    border: none;
+    background-color: #531CB3;
+    color: white;
+    padding: .3em .7em;
+    font-size: 1.5em;
+    border-radius: 4px;
+}
+
+
+
+
+
+
+
+.playlist_info{
+    display: flex;
+    &>div{
+        margin-right: 5px;
+        color: gray;
+    }
+}
+.song__info{
+    display: flex;
+    &>div{
+        margin-right: 5px;
+        color: gray;
+    }
+}
+
+
+.song{
+    margin-bottom: 20px;
+}
+.songs_container{
+    margin-bottom: 15px;
+}
+
+.main{
+    position: relative;
+
+
+    .modal_container{
+        &.inactive{
+            display: none;
+        }
+
+
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.267);
+        top: 0;
+        bottom: 0;
+        left:0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+
+        .modal{
+            box-shadow: 0 8px 17px 2px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2);
+            background-color: white;
+            height: 80vh;
+            width: 80vw;
+            position: relative;
+            padding:50px;
+            .buttons{
+                position: absolute;
+                bottom: 20px;
+                display: flex;
+                left:50%;
+               
+                &>button{
+                    margin:15px;
+                }
+            }
+
+            input{
+                width:100%;
+                margin-bottom: 30px;
+                border:none;
+                border-bottom: 1px solid black;
+                height: 30px;
+                &:focus{
+                    outline: none;
+                }
+            }
+
+            .add_song_container{
+                .add_song{
+                    input{
+                        width: 20%;
+                        margin: 5px;
+                    }
+                }
+
+
+
+
+            }
+
+            .editsong{
+                background-color: white;
+                text-transform: uppercase;
+                border: none;
+                padding: .3em .5em;
+                font-size: .8em;
+                &.addsong{
+                    color: green;
+                }
+                &.remsong{
+                    color:red;
+                }
+                &:hover{
+                    background-color: lightgray;
+                }
+
+            }
+
+
+
+
+
+        }
+
+       
+
+    }
+}
+
+.main{
+    position: relative;
+}
+
+
+.buttons{
+    button{
+        padding: .3em .7em;
+        border:none;
+        font-size: 1.3em;
+        border-radius: 4px;
+      
+ 
+    }
+    .cancel{
+        background-color: red;
+        color: white;
+        &:hover{
+            background-color: darken($color: red, $amount: 9)
+        }
+    }
+    .submit{
+        background-color: #3F51B5;
+        color:white;
+
+        //background-color: lightgrey;
+        &:disabled{
+            color: rgb(88, 88, 88);
+            background-color: lightgrey;
+        }
+       
+    }
 }
